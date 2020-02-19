@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Memory Game</title>
+	<link rel="icon" href="memorygame.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		td>button {
+			width: 5em;
+			height: 5em;
+			background-color: white;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div id="gameEntrance" class="row">
+			<div class="mx-auto col-sm-6 text-center mt-5">
+				<h1>
+					<span class="badge"><img src="memorygame.ico" width="70px" height="70px" /></span>
+					Welcome to Memory Game
+				</h1>
+				<form id="formName" action="#" class="mt-5">
+					<input type="text" id="txtPlayerName" class="form-control text-center" placeholder="Player Name"
+						required maxlength="15" />
+					<input type="submit" value="Save" class="form-control btn btn-info mt-2" />
+				</form>
+				<div id="divErrorMessage" class="alert alert-danger mt-3" hidden>Username Already Exist</div>
+			</div>
+		</div>
+		<div id="gameContainer" class="row">
+			<div class="col-sm-12 text-center mt-5">
+				<div class="row">
+					<div class="col-sm-4">
+						<p class="display-4">
+							Username : <span id="txtDisplayPlayerName" class="font-weight-bold"></span>
+						</p>
+						<button data-toggle="tooltip" title="Start" class="btn btn-lg btn-success" onclick="startGame()"
+							id="btnStart"><i class="fas fa-play"></i></button>
+						<button data-toggle="tooltip" title="Pause" class="btn btn-lg btn-warning"
+							onclick="pauseTimer()"><i class="fas fa-pause"></i></button>
+						<button data-toggle="tooltip" title="Restart" class="btn btn-lg btn-success"
+							onclick="restartGame(false)" disabled id="btnRestart"><i
+								class="fas fa-recycle"></i></button>
+						<button data-toggle="tooltip" title="Quit" class="btn btn-lg btn-danger" onclick="quitGame()"><i
+								class="fas fa-stop"></i></button>
+						<p id="txtTime" class="display-4">00 : 00</p>
+
+						<hr />
+					</div>
+
+					<div class="col-sm-6">
+						<table id="tblGame" class="table table-borderless">
+							<tr>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+							</tr>
+							<tr>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+							</tr>
+							<tr>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+							</tr>
+							<tr>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+								<td><button class="btn btn-light border-dark"><span></span></button></td>
+							</tr>
+						</table>
+					</div>
+					<input type=hidden id="selectedId" value="" />
+				</div>
+			</div>
+		</div>
+		<div class="row" id="gameFinish">
+			<div class="col-sm-12 text-center mt-5">
+				<h1 class="display-2">
+					Congratulations
+					<span class="fas fa-trophy"></span>
+				</h1>
+				<p class="display-4 font-weight-bold" id="txtWinner">Vlad</p>
+				<h1 class="font-weight-light">Total Time : <span id="txtTotalTime" class="font-weight-bold">00:00</span>
+				</h1>
+				<button class="btn btn-lg btn-success" onclick="restartGame(true)">Restart</button>
+				<button class="btn btn-lg btn-danger" onclick="quitGame()">Quit</button>
+				<table class="table mt-2" id="tableRanking">
+					<tr>
+						<th>Ranking</th>
+						<th>Username</th>
+						<th>TotalTime</th>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip({
+				trigger: 'hover'
+			});
+		});
+	</script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
